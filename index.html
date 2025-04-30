@@ -195,14 +195,16 @@
         }
         
         .organizers-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 30px;
             margin-top: 30px;
         }
         
         .organizer-card {
             text-align: center;
+            width: 180px;
         }
         
         .organizer-image {
@@ -267,7 +269,7 @@
     <header>
         <div class="container">
             <h1>Theory of AI for Scientific Computing</h1>
-            <p>TASC Workshop 2025</p>
+            <p>Official website of the TASC workshop, to be held June 30, 2025 as part of <a href="https://learningtheory.org/colt2025/index.html" target="_blank" style="color: white; text-decoration: underline;">COLT 2025</a></p>
         </div>
     </header>
     
@@ -288,10 +290,10 @@
                 <h2>About TASC</h2>
             </div>
             <p>
-                The Theory of AI for Scientific Computing (TASC) workshop aims to bridge the gap between theoretical advancements in artificial intelligence and their practical applications in scientific computing. This workshop brings together researchers, practitioners, and theorists to explore innovative approaches, methodologies, and frameworks that leverage AI to solve complex scientific computing problems.
-            </p>
-            <p>
-                Join us for an exciting program featuring keynote presentations, paper sessions, and networking opportunities. We welcome contributions that advance our understanding of AI in scientific computing contexts and demonstrate novel applications across various scientific domains.
+                The Theory of AI for Scientific Computing (TASC) workshop will be held as part of COLT 2025 and aims to advance the theoretical understanding of AI-augmented scientific computing, including capabilities and limitations of recent methods, principled architectures, unique data-generation and training considerations when connecting ML to downstream tasks, the sample complexity potential of transfer learning and active sampling, and ensuring the robustness of deployed systems and the validity of new discoveries.
+                Our goal is to foster new theory that can bridge the gap between rapid methodological developments and their ultimate goals:
+scientific understanding and deployable computational systems.
+                Join us on June 30, 2025 in Lyon, France for an exciting program of keynote presentations, contributed poster sessions, and community discussions about building principled connections between learning, algorithms, and the physical sciences, identifying promising scientific computing objectives for AI, and formalizing theoretical problems that will inspire continued progress.
             </p>
         </div>
     </section>
@@ -302,38 +304,40 @@
                 <h2>Keynote Speakers</h2>
             </div>
             <div class="speakers-container">
+                
                 <div class="speaker-card">
                     <div class="speaker-image">
-                        <img src="/api/placeholder/300/200" alt="Speaker 1">
+                        <img src="joan.jpg" alt="Joan Bruna">
                     </div>
                     <div class="speaker-info">
-                        <h3>Dr. Jane Smith</h3>
-                        <p class="affiliation">Stanford University</p>
-                        <p>Expert in theoretical foundations of AI for computational physics and fluid dynamics simulations. Her recent work focuses on uncertainty quantification in deep learning models for PDE solutions.</p>
+                        <h3><a href="https://cims.nyu.edu/~bruna/" target="_blank">Joan Bruna</a></h3>
+                        <p class="affiliation">New York University</p>
+                        <p>CS, Data Science, and Mathematics</p>
                     </div>
                 </div>
                 
                 <div class="speaker-card">
                     <div class="speaker-image">
-                        <img src="/api/placeholder/300/200" alt="Speaker 2">
+                        <img src="aditi.jpeg" alt="Aditi Krishnapriyan">
                     </div>
                     <div class="speaker-info">
-                        <h3>Prof. Michael Johnson</h3>
-                        <p class="affiliation">MIT</p>
-                        <p>Leading researcher in foundation models for scientific computing. His group has pioneered the development of AI systems that discover physical laws from observational data.</p>
+                        <h3><a href="https://a1k12.github.io" target="_blank">Aditi Krishnapriyan</a></h3>
+                        <p class="affiliation">UC Berkeley</p>
+                        <p>Chemical Engineering and EECS</p>
                     </div>
                 </div>
-                
+
                 <div class="speaker-card">
                     <div class="speaker-image">
                         <img src="/api/placeholder/300/200" alt="Speaker 3">
                     </div>
                     <div class="speaker-info">
-                        <h3>Dr. Lisa Chen</h3>
-                        <p class="affiliation">DeepMind</p>
-                        <p>Research scientist specializing in reinforcement learning approaches for optimization problems in scientific domains, with applications in material science and drug discovery.</p>
+                        <h3>TBA</h3>
+                        <p class="affiliation">affiliation</p>
+                        <p>coming soon</p>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -344,25 +348,46 @@
                 <h2>Call for Papers</h2>
             </div>
             <div class="cfp">
-                <p>We invite submissions on topics including, but not limited to:</p>
+                <p>We invited submissions on all topics at the intersections of learning theory and statistics with computation and the physical sciences, including but not limited to:</p>
+                <br>
                 <ul>
-                    <li>Theoretical foundations of AI for scientific computing</li>
-                    <li>Novel neural architectures for scientific problems</li>
-                    <li>Physics-informed machine learning</li>
-                    <li>AI for high-performance computing optimization</li>
-                    <li>Interpretable and explainable AI for scientific applications</li>
-                    <li>Uncertainty quantification in AI for science</li>
-                    <li>Foundation models for scientific domains</li>
-                    <li>Differentiable programming for scientific computing</li>
-                    <li>AI for computational chemistry and materials science</li>
-                    <li>Theoretical advances in neural solvers for PDEs</li>
+                  <i>Learning-theoretic foundations</i>
+                  <ul>
+                    <li>learning-theoretic and statistical analysis of data-driven solutions to important scientific computing tasks such as solving differential equations, inverse problems, sampling, equation discovery, and beyond</li>
+                    <li>mathematical characterizations of settings in which AI-augmented methods can be expected to improve over traditional (AI-free) scientific computing methods</li>
+                    <li>end-to-end theoretical studies that consider simultaneously the entire scientific computing pipeline, i.e. not only learning from data but also generating the data itself and integrating the learned model into downstream scientific computing tasks</li>
+                    <li>non-i.i.d. settings such as active sampling of ground truth solutions, reinforcement learning (RL) of equations and solvers, and transfer learning between different differential equation families, different solution domains, and different initial or boundary conditions</li>
+                    <li>formalizing concrete goals for scientific discovery</li>
+                  </ul>
+                  <i>Principled methods for scientific computing</i>
+                  <ul>
+                    <li>theoretically-motivated design of neural architectures and loss functions for scientific computing tasks</li>
+                    <li>mathematical connections between generative modeling and tractable solutions of high-dimensional PDEs</li>
+                    <li>principled approaches to data-generation, model training, and model deployment</li>
+                    <li>statistical machinery for certifying the quality and confidence of AI-augmented algorithms and improving their robustness</li>
+                  </ul>
+                  <i>Connections with other subfields of theory</i>
+                  <ul>
+                    <li>sampling</li>
+                    <li>learning-augmented algorithms (algorithms with predictions) and data-driven algorithm design</li>
+                    <li>optimization</li>
+                    <li>randomized numerical linear algebra</li>
                 </ul>
                 
-                <p><strong>Submission Requirements:</strong></p>
-                <p>Papers should be submitted as PDF files using the provided ACM template. Submissions must be limited to 8 pages, including figures and references. All papers will undergo a double-blind peer review process. Accepted papers will be presented at the workshop and published in the proceedings.</p>
-                
-                <p><strong>Review Criteria:</strong></p>
-                <p>Submissions will be evaluated based on originality, technical soundness, clarity of presentation, and relevance to the workshop themes. We particularly encourage submissions that advance theoretical understanding while demonstrating practical impact.</p>
+                <p><strong>Submission criteria:</strong></p>
+                <p>
+                Papers should be submitted as PDF files in any format that has a font size of at least 10 points and margins of at least 1 inch. 
+                Submissions are not limited in length, but only the first 8 pages are guaranteed to be reviewed.
+                Accepted papers will be made public on OpenReview but are non-archival, and we welcome submissions of works accepted at previous or upcoming conferences, including COLT 2025 and ICML 2025.
+                </p>
+                <br>
+                <p><strong>Reviewing and publication:</strong></p>
+                All papers will undergo a double-blind peer review process assessing mainly clarity, relevance, and soundness.
+                Reviewing will occur on the OpenReview platform but reviews will not be public.
+                Authors of accepted papers will be invited to present a poster about it on the day of the workshop (June 30).
+                The organizers will also select the authors of up to two submissions to give short contributed talks on the same day.
+                </p>
+
             </div>
         </div>
     </section>
@@ -375,22 +400,22 @@
             <div class="dates-grid">
                 <div class="date-card">
                     <h3>Paper Submission Deadline</h3>
-                    <p>June 15, 2025</p>
+                    <p>May 15, 2025</p>
                 </div>
                 
                 <div class="date-card">
                     <h3>Notification of Acceptance</h3>
-                    <p>July 30, 2025</p>
+                    <p>June 1, 2025</p>
                 </div>
                 
                 <div class="date-card">
                     <h3>Camera-Ready Deadline</h3>
-                    <p>August 15, 2025</p>
+                    <p>June 15, 2025</p>
                 </div>
                 
                 <div class="date-card">
                     <h3>Workshop Date</h3>
-                    <p>September 10-11, 2025</p>
+                    <p>June 30, 2025</p>
                 </div>
             </div>
             <p style="text-align: center; margin-top: 20px;"><em>All deadlines are 11:59 PM Anywhere on Earth (AoE)</em></p>
@@ -405,34 +430,42 @@
             <div class="organizers-container">
                 <div class="organizer-card">
                     <div class="organizer-image">
-                        <img src="/api/placeholder/120/120" alt="Organizer 1">
+                        <img src="nick.jpg" alt="Nick Boffi">
                     </div>
-                    <h3>Dr. Robert Williams</h3>
+                    <h3><a href="https://nmboffi.github.io" target="_blank">Nick Boffi</a></h3>
+                    <p>Carnegie Mellon University</p>
+                </div>
+
+                <div class="organizer-card">
+                    <div class="organizer-image">
+                        <img src="misha.jpg" alt="Misha Khodak">
+                    </div>
+                    <h3><a href="https://pages.cs.wisc.edu/~khodak/" target="_blank">Misha Khodak</a></h3>
                     <p>Princeton University</p>
                 </div>
                 
                 <div class="organizer-card">
                     <div class="organizer-image">
-                        <img src="/api/placeholder/120/120" alt="Organizer 2">
+                        <img src="jianfeng.jpg" alt="Jianfeng Lu">
                     </div>
-                    <h3>Prof. Sarah Lee</h3>
-                    <p>University of Washington</p>
+                    <h3><a href="https://sites.math.duke.edu/~jianfeng/" target="_blank">Jianfeng Lu</a></h3>
+                    <p>Duke University</p>
                 </div>
                 
                 <div class="organizer-card">
                     <div class="organizer-image">
-                        <img src="/api/placeholder/120/120" alt="Organizer 3">
+                        <img src="tanya.png" alt="Tanya Marwah">
                     </div>
-                    <h3>Dr. James Chen</h3>
+                    <h3><a href="https://tm157.github.io" target="_blank">Tanya Marwah</a></h3>
                     <p>Carnegie Mellon University</p>
                 </div>
-                
+
                 <div class="organizer-card">
                     <div class="organizer-image">
-                        <img src="/api/placeholder/120/120" alt="Organizer 4">
+                        <img src="andrej.jpg" alt="Andrej Risteski">
                     </div>
-                    <h3>Dr. Maria Rodriguez</h3>
-                    <p>UC Berkeley</p>
+                    <h3><a href="https://www.andrew.cmu.edu/user/aristesk/" target="_blank">Andrej Risteski</a></h3>
+                    <p>Carnegie Mellon University</p>
                 </div>
             </div>
         </div>
@@ -452,7 +485,6 @@
     <footer>
         <div class="container">
             <p>&copy; 2025 TASC Workshop | Theory of AI for Scientific Computing</p>
-            <p>Website template created for GitHub Pages</p>
         </div>
     </footer>
 </body>
