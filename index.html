@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TASC - Theory of AI for Scientific Computing</title>
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2980b9;
+            --accent-color: #e74c3c;
+            --text-color: #333;
+            --light-bg: #f9f9f9;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: white;
+        }
+        
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        nav ul li {
+            padding: 15px 20px;
+        }
+        
+        nav ul li a {
+            color: var(--text-color);
+            font-weight: 500;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        section {
+            padding: 60px 0;
+        }
+        
+        section:nth-child(even) {
+            background-color: var(--light-bg);
+        }
+        
+        .section-heading {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-heading h2 {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        
+        .section-heading h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+        
+        .speakers-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+        
+        .speaker-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            width: 300px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .speaker-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+        
+        .speaker-image {
+            width: 100%;
+            height: 200px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .speaker-info {
+            padding: 20px;
+        }
+        
+        .speaker-info h3 {
+            margin-bottom: 5px;
+            color: var(--secondary-color);
+        }
+        
+        .speaker-info p.affiliation {
+            color: var(--accent-color);
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        
+        .cfp {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .cfp ul {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .dates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .date-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .date-card h3 {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .organizers-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .organizer-card {
+            text-align: center;
+        }
+        
+        .organizer-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-color: #ddd;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .submission-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 4px;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+        
+        .submission-button:hover {
+            background-color: #c0392b;
+            text-decoration: none;
+        }
+        
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                padding: 40px 0;
+            }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+            }
+            
+            .speakers-container {
+                gap: 20px;
+            }
+            
+            .speaker-card {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Theory of AI for Scientific Computing</h1>
+            <p>TASC Workshop 2025</p>
+        </div>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#speakers">Speakers</a></li>
+            <li><a href="#cfp">Call for Papers</a></li>
+            <li><a href="#dates">Important Dates</a></li>
+            <li><a href="#organizers">Organizers</a></li>
+            <li><a href="#submission">Submission</a></li>
+        </ul>
+    </nav>
+    
+    <section id="about">
+        <div class="container">
+            <div class="section-heading">
+                <h2>About TASC</h2>
+            </div>
+            <p>
+                The Theory of AI for Scientific Computing (TASC) workshop aims to bridge the gap between theoretical advancements in artificial intelligence and their practical applications in scientific computing. This workshop brings together researchers, practitioners, and theorists to explore innovative approaches, methodologies, and frameworks that leverage AI to solve complex scientific computing problems.
+            </p>
+            <p>
+                Join us for an exciting program featuring keynote presentations, paper sessions, and networking opportunities. We welcome contributions that advance our understanding of AI in scientific computing contexts and demonstrate novel applications across various scientific domains.
+            </p>
+        </div>
+    </section>
+    
+    <section id="speakers">
+        <div class="container">
+            <div class="section-heading">
+                <h2>Keynote Speakers</h2>
+            </div>
+            <div class="speakers-container">
+                <div class="speaker-card">
+                    <div class="speaker-image">
+                        <img src="/api/placeholder/300/200" alt="Speaker 1">
+                    </div>
+                    <div class="speaker-info">
+                        <h3>Dr. Jane Smith</h3>
+                        <p class="affiliation">Stanford University</p>
+                        <p>Expert in theoretical foundations of AI for computational physics and fluid dynamics simulations. Her recent work focuses on uncertainty quantification in deep learning models for PDE solutions.</p>
+                    </div>
+                </div>
+                
+                <div class="speaker-card">
+                    <div class="speaker-image">
+                        <img src="/api/placeholder/300/200" alt="Speaker 2">
+                    </div>
+                    <div class="speaker-info">
+                        <h3>Prof. Michael Johnson</h3>
+                        <p class="affiliation">MIT</p>
+                        <p>Leading researcher in foundation models for scientific computing. His group has pioneered the development of AI systems that discover physical laws from observational data.</p>
+                    </div>
+                </div>
+                
+                <div class="speaker-card">
+                    <div class="speaker-image">
+                        <img src="/api/placeholder/300/200" alt="Speaker 3">
+                    </div>
+                    <div class="speaker-info">
+                        <h3>Dr. Lisa Chen</h3>
+                        <p class="affiliation">DeepMind</p>
+                        <p>Research scientist specializing in reinforcement learning approaches for optimization problems in scientific domains, with applications in material science and drug discovery.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="cfp">
+        <div class="container">
+            <div class="section-heading">
+                <h2>Call for Papers</h2>
+            </div>
+            <div class="cfp">
+                <p>We invite submissions on topics including, but not limited to:</p>
+                <ul>
+                    <li>Theoretical foundations of AI for scientific computing</li>
+                    <li>Novel neural architectures for scientific problems</li>
+                    <li>Physics-informed machine learning</li>
+                    <li>AI for high-performance computing optimization</li>
+                    <li>Interpretable and explainable AI for scientific applications</li>
+                    <li>Uncertainty quantification in AI for science</li>
+                    <li>Foundation models for scientific domains</li>
+                    <li>Differentiable programming for scientific computing</li>
+                    <li>AI for computational chemistry and materials science</li>
+                    <li>Theoretical advances in neural solvers for PDEs</li>
+                </ul>
+                
+                <p><strong>Submission Requirements:</strong></p>
+                <p>Papers should be submitted as PDF files using the provided ACM template. Submissions must be limited to 8 pages, including figures and references. All papers will undergo a double-blind peer review process. Accepted papers will be presented at the workshop and published in the proceedings.</p>
+                
+                <p><strong>Review Criteria:</strong></p>
+                <p>Submissions will be evaluated based on originality, technical soundness, clarity of presentation, and relevance to the workshop themes. We particularly encourage submissions that advance theoretical understanding while demonstrating practical impact.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="dates">
+        <div class="container">
+            <div class="section-heading">
+                <h2>Important Dates</h2>
+            </div>
+            <div class="dates-grid">
+                <div class="date-card">
+                    <h3>Paper Submission Deadline</h3>
+                    <p>June 15, 2025</p>
+                </div>
+                
+                <div class="date-card">
+                    <h3>Notification of Acceptance</h3>
+                    <p>July 30, 2025</p>
+                </div>
+                
+                <div class="date-card">
+                    <h3>Camera-Ready Deadline</h3>
+                    <p>August 15, 2025</p>
+                </div>
+                
+                <div class="date-card">
+                    <h3>Workshop Date</h3>
+                    <p>September 10-11, 2025</p>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 20px;"><em>All deadlines are 11:59 PM Anywhere on Earth (AoE)</em></p>
+        </div>
+    </section>
+    
+    <section id="organizers">
+        <div class="container">
+            <div class="section-heading">
+                <h2>Organizers</h2>
+            </div>
+            <div class="organizers-container">
+                <div class="organizer-card">
+                    <div class="organizer-image">
+                        <img src="/api/placeholder/120/120" alt="Organizer 1">
+                    </div>
+                    <h3>Dr. Robert Williams</h3>
+                    <p>Princeton University</p>
+                </div>
+                
+                <div class="organizer-card">
+                    <div class="organizer-image">
+                        <img src="/api/placeholder/120/120" alt="Organizer 2">
+                    </div>
+                    <h3>Prof. Sarah Lee</h3>
+                    <p>University of Washington</p>
+                </div>
+                
+                <div class="organizer-card">
+                    <div class="organizer-image">
+                        <img src="/api/placeholder/120/120" alt="Organizer 3">
+                    </div>
+                    <h3>Dr. James Chen</h3>
+                    <p>Carnegie Mellon University</p>
+                </div>
+                
+                <div class="organizer-card">
+                    <div class="organizer-image">
+                        <img src="/api/placeholder/120/120" alt="Organizer 4">
+                    </div>
+                    <h3>Dr. Maria Rodriguez</h3>
+                    <p>UC Berkeley</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="submission">
+        <div class="container" style="text-align: center;">
+            <div class="section-heading">
+                <h2>Paper Submission</h2>
+            </div>
+            <p>Submit your papers through our submission portal. Please ensure that you follow all the submission guidelines outlined in the Call for Papers section.</p>
+            <a href="https://tasc-workshop.github.io/submission" class="submission-button">Submit Your Paper</a>
+            <p style="margin-top: 20px;">For any questions regarding the submission process, please contact: <a href="mailto:tasc2025@example.com">tasc2025@example.com</a></p>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 TASC Workshop | Theory of AI for Scientific Computing</p>
+            <p>Website template created for GitHub Pages</p>
+        </div>
+    </footer>
+</body>
+</html>
