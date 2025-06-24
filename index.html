@@ -71,6 +71,7 @@
             display: flex;
             justify-content: center;
             list-style: none;
+            flex-wrap: wrap;
         }
         
         nav ul li {
@@ -162,6 +163,52 @@
             color: var(--accent-color);
             font-weight: 500;
             margin-bottom: 10px;
+        }
+        
+        .schedule-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .schedule-table {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .schedule-row {
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #f0f0f0;
+            padding: 15px 0;
+        }
+        
+        .schedule-row:last-child {
+            border-bottom: none;
+        }
+        
+        .schedule-row:hover {
+            background-color: var(--light-bg);
+        }
+        
+        .schedule-time {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 6px;
+            font-weight: 600;
+            min-width: 90px;
+            text-align: center;
+            font-size: 0.9rem;
+            margin: 0 25px;
+        }
+        
+        .schedule-event {
+            flex: 1;
+            font-size: 1rem;
+            color: var(--text-color);
+            margin-right: 25px;
         }
         
         .cfp {
@@ -262,6 +309,16 @@
                 width: 100%;
                 max-width: 300px;
             }
+            
+            .schedule-item {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .schedule-time {
+                min-width: auto;
+                align-self: flex-start;
+            }
         }
     </style>
 </head>
@@ -277,6 +334,7 @@
         <ul>
             <li><a href="#about">About</a></li>
             <li><a href="#speakers">Speakers</a></li>
+            <li><a href="#schedule">Schedule</a></li>
             <li><a href="#cfp">Call for Papers</a></li>
             <li><a href="#submission">Submission</a></li>
             <li><a href="#dates">Important Dates</a></li>
@@ -339,6 +397,61 @@ scientific understanding and deployable computational systems.
                     </div>
                 </div>
 
+            </div>
+        </div>
+    </section>
+    
+    <section id="schedule">
+        <div class="container">
+            <div class="section-heading">
+                <h2>Workshop Schedule</h2>
+            </div>
+            <div class="schedule-container">
+                <p style="text-align: center; margin-bottom: 30px; font-style: italic;">June 30, 2025 • Lyon, France • All times in Central European Time (CET)</p>
+                
+                <div class="schedule-table">
+                    <div class="schedule-row">
+                        <div class="schedule-time">9:00 AM</div>
+                        <div class="schedule-event">Welcoming remarks</div>
+                    </div>
+                    
+                    <div class="schedule-row">
+                        <div class="schedule-time">9:05 AM</div>
+                        <div class="schedule-event">Invited speaker: Joan Bruna (NYU)</div>
+                    </div>
+                    
+                    <div class="schedule-row">
+                        <div class="schedule-time">9:45 AM</div>
+                        <div class="schedule-event">Invited speaker: Houman Owhadi (Caltech)</div>
+                    </div>
+
+                    <div class="schedule-row">
+                        <div class="schedule-time">10:25 AM</div>
+                        <div class="schedule-event">Coffee break and posters</div>
+                    </div>
+
+                    <div class="schedule-row">
+                        <div class="schedule-time">11:00 AM</div>
+                        <div class="schedule-event">Contributed talk</div>
+                    </div>
+
+                    <div class="schedule-row">
+                        <div class="schedule-time">11:10 AM</div>
+                        <div class="schedule-event">Contributed talk</div>
+                    </div>
+                    
+                    <div class="schedule-row">
+                        <div class="schedule-time">11:20 PM</div>
+                        <div class="schedule-event">Invited speaker: Aditi Krishnapriyan (UC Berkeley)</div>
+                    </div>
+                    
+                    <div class="schedule-row">
+                        <div class="schedule-time">12:00 PM</div>
+                        <div class="schedule-event">Poster session</div>
+                    </div>
+                    
+                </div>
+                
             </div>
         </div>
     </section>
