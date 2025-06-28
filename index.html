@@ -209,6 +209,77 @@
             font-size: 1rem;
             color: var(--text-color);
             margin-right: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .event-info {
+            flex: 1;
+        }
+
+        .event-info strong {
+            color: var(--secondary-color);
+        }
+
+        .event-info em {
+            color: var(--text-color);
+            font-size: 0.95rem;
+        }
+
+        .details-btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-left: 15px;
+        }
+
+        .details-btn:hover {
+            background-color: #c0392b;
+        }
+
+        .keynote-details {
+            display: none;
+            background-color: var(--light-bg);
+            border-left: 4px solid var(--accent-color);
+            margin: 0 25px 0 115px;
+            animation: slideDown 0.3s ease-out;
+        }
+
+        .keynote-details.show {
+            display: block;
+        }
+
+        .details-content {
+            padding: 20px;
+        }
+
+        .details-content h4 {
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .details-content p {
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                max-height: 0;
+            }
+            to {
+                opacity: 1;
+                max-height: 200px;
+            }
         }
         
         .cfp {
@@ -310,14 +381,36 @@
                 max-width: 300px;
             }
             
-            .schedule-item {
+            .schedule-row {
                 flex-direction: column;
-                gap: 15px;
+                gap: 10px;
+                align-items: flex-start;
+                padding: 15px 20px;
             }
             
             .schedule-time {
-                min-width: auto;
+                margin: 0;
                 align-self: flex-start;
+            }
+            
+            .schedule-event {
+                margin: 0;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .event-info {
+                width: 100%;
+            }
+            
+            .details-btn {
+                margin-left: 0;
+                align-self: flex-start;
+            }
+            
+            .keynote-details {
+                margin: 0 20px;
             }
         }
     </style>
@@ -372,6 +465,7 @@ scientific understanding and deployable computational systems.
                         <h3><a href="https://cims.nyu.edu/~bruna/" target="_blank">Joan Bruna</a></h3>
                         <p class="affiliation">New York University</p>
                         <p>CS, Data Science, &amp; Mathematics</p>
+                        <em>On Inverse Problems and Diffusion</em>
                     </div>
                 </div>
                 
@@ -383,6 +477,7 @@ scientific understanding and deployable computational systems.
                         <h3><a href="https://a1k12.github.io" target="_blank">Aditi Krishnapriyan</a></h3>
                         <p class="affiliation">UC Berkeley</p>
                         <p>Chemical Engineering &amp; EECS</p>
+                        <em>Physics-Informed Machine Learning: Theory and Practice</em>
                     </div>
                 </div>
 
@@ -394,6 +489,7 @@ scientific understanding and deployable computational systems.
                         <h3><a href="http://users.cms.caltech.edu/~owhadi/" target="_blank">Houman Owhadi</a></h3>
                         <p class="affiliation">California Institute of Technology</p>
                         <p>Computing &amp; Mathematical Sciences</p>
+                        <em>Operator Learning and Computational Homogenization</em>
                     </div>
                 </div>
 
@@ -417,37 +513,246 @@ scientific understanding and deployable computational systems.
                     
                     <div class="schedule-row">
                         <div class="schedule-time">9:05 AM</div>
-                        <div class="schedule-event">Invited speaker: Joan Bruna (NYU)</div>
+                        <div class="schedule-event">
+                            <div class="event-info">
+                                <strong>Joan Bruna (NYU)</strong><br>
+                                <em>On Inverse Problems and Diffusion</em>
+                            </div>
+                            <button class="details-btn" onclick="toggleDetails('keynote1')" data-show-text="View Abstract" data-hide-text="Hide Abstract">View Abstract</button>
+                        </div>
+                    </div>
+                    <div class="keynote-details" id="keynote1">
+                        <div class="details-content">
+                          <p><strong>Abstract:</strong> Transport-based models, such as diffusion or flow-matching, have become a leading 
+framework for generative modeling, by reducing the task to modeling conditional expectations under suitable "noise" semigroups. 
+In this talk, we will describe how these models can be adapted beyond generative modeling to the setting of inverse problems. 
+We will focus on two snippets: (i) performing provable posterior sampling in the context of linear inverse problems, and (ii) learning 
+a generative model from corrupted measurements, akin to solving another linear inverse problem, this time in the space of distributions. 
+Joint work with Jiequn Han, Chirag Modi and Eric Vanden-Eijnden.</p>
+                        </div>
                     </div>
                     
                     <div class="schedule-row">
                         <div class="schedule-time">9:45 AM</div>
-                        <div class="schedule-event">Invited speaker: Houman Owhadi (Caltech)</div>
+                        <div class="schedule-event">
+                            <div class="event-info">
+                                <strong>Houman Owhadi (Caltech)</strong><br>
+                                <em>Data-Efficient Kernel Methods for Learning Differential Equations and Their Solution Operators: Algorithms and Error Analysis</em>
+                            </div>
+                            <button class="details-btn" onclick="toggleDetails('keynote2')" data-show-text="View Abstract" data-hide-text="Hide Abstract">View Abstract</button>
+                        </div>
+                    </div>
+                    <div class="keynote-details" id="keynote2">
+                        <div class="details-content">
+                          <p><strong>Abstract:</strong> We introduce a novel kernel-based framework for learning differential equations and their solution maps, which is efficient in terms of data requirements (both the number of solution examples and the amount of measurements from each example), as well as computational cost and training procedures. Our approach is mathematically interpretable and supported by rigorous theoretical guarantees in the form of quantitative worst-case error bounds for the learned equations and solution operators. Numerical benchmarks demonstrate significant improvements in computational complexity and robustness, achieving one to two orders of magnitude improvement in accuracy compared to state-of-the-art algorithms. This presentation is based on joint work with Yasamin Jalalian, Juan Felipe Osorio Ramirez, Alexander Hsu, and Bamdad Hosseini. A preprint is available at: <a href=https://arxiv.org/abs/2503.01036>https://arxiv.org/abs/2503.01036</a>.</p>
+                        </div>
                     </div>
 
                     <div class="schedule-row">
                         <div class="schedule-time">10:25 AM</div>
-                        <div class="schedule-event">Coffee break and posters</div>
+                        <div class="schedule-event">
+                            <div class="event-info">
+                                Coffee break and poster setup
+                            </div>
+                            <button class="details-btn" onclick="toggleDetails('posters1')" data-show-text="View Accepted Posters" data-hide-text="Hide Posters">View Accepted Posters</button>
+                        </div>
                     </div>
+                    <div class="keynote-details" id="posters1">
+                        <div class="details-content">
+                          <div>
+    <a href="https://openreview.net/forum?id=O7YgvPePse">Universal Approximation of Mean-Field Models via Transformers</a><br>
+    Authors: Shiba Biswal, Karthik Elamvazhuthi, Rishi Sonthalia
+    <br></br>
+</div>
+
+<div>
+    <a href="https://openreview.net/forum?id=iUppQcPAMK">Student-t processes as infinite-width limits of posterior BNNs</a><br>
+    Authors: Francesco Caporali, Stefano Favaro, Dario Trevisan
+    <br></br>
+</div>
+
+<div>
+    <a href="https://openreview.net/forum?id=lknSpGLyI8">Classes of bounded functions that are semantically equivalent to Turing-machine are PAC learnable</a><br>
+    Author: Kevin Xu
+    <br></br>
+</div>
+
+<div>
+    <a href="https://openreview.net/forum?id=ZCH6z1i7eU">Matrix-Free Two-to-Infinity and One-to-Two Norms Estimation</a><br>
+    Authors: Askar Tsyganov, Sergey Samsonov, Maxim Rakhuba
+    <br></br>
+</div>
+
+<div>
+    <a href="https://openreview.net/forum?id=VqycjZACPS">Translation-Equivariance of Normalization Layers and Aliasing in Convolutional Neural Networks</a><br>
+    Authors: Jérémy Scanvic, Quentin Barthélemy, Julián Tachella
+    <br></br>
+</div>
+
+<div>
+    <a href="https://openreview.net/forum?id=rKZkotB0um">BWLer: Barycentric Weight Layer Elucidates a Precision-Conditioning Tradeoff for PINNs</a><br>
+    Authors: Jerry Weihong Liu, Yasa Baig, Denise H. J. Lee, Rajat Vadiraj Dwaraknath, Atri Rudra, Christopher Re
+    <br></br>
+</div>
+
+<div>
+    <a href="https://openreview.net/forum?id=1PPbK8uklp">Query Efficient Structured Matrix Approximation</a><br>
+    Authors: Noah Amsel, Pratyush Avi, Tyler Chen, Feyza Duman Keles, Chinmay Hegde, Christopher Musco, Cameron N. Musco, David Persson
+    <br></br>
+</div>
+
+<div>
+    <a href="https://openreview.net/forum?id=APd65s5NAK">Generalized Lie Symmetries in Physics-Informed Neural Operators</a><br>
+    Authors: Amy Xiang Wang, Zakhar Shumaylov, Peter Zaika, Ferdia Sherry, Carola-Bibiane Schönlieb
+    <br></br>
+</div>
+
+<div>
+    <a href="https://openreview.net/forum?id=tS4vGObuCA">Enhancing Physics-Informed Neural Networks Through Feature Engineering</a><br>
+    Authors: Shaghayegh Fazliani, Zachary Frangella, Ya-Chi Chu, Madeleine Udell
+    <br></br>
+</div>
+
+<div>
+    <a href="https://openreview.net/forum?id=W2TVe58Rp2">Stochastic Differential Policy Optimization: A Rough Path Approach to Reinforcement Learning</a><br>
+    Authors: Minh Phuong Nguyen, Chandrajit L. Bajaj
+    <br></br>
+</div>
+
+<div>
+    <a href="https://openreview.net/forum?id=xmTo6lOQkg">On the upper bounds for the matrix spectral norm</a><br>
+    Authors: Ryapolov Denis, Maxim Rakhuba, Sergey Samsonov, Alexey Naumov
+    <br></br>
+</div>
+                        </div>
+                    </div>
+                    
 
                     <div class="schedule-row">
                         <div class="schedule-time">11:00 AM</div>
-                        <div class="schedule-event">Contributed talk</div>
+                        <div class="schedule-event">
+                            <div class="event-info">
+                                <strong>Contributed Talk: Xiang Wang</strong><br>
+                                <em>Generalized Lie Symmetries in Physics-Informed Neural Operators</em>
+                            </div>
+                            <button class="details-btn" onclick="toggleDetails('contributed1')" data-show-text="View Abstract" data-hide-text="Hide Abstract">View Abstract</button>
+                        </div>
+                    </div>
+                    <div class="keynote-details" id="contributed1">
+                        <div class="details-content">
+                          <p><strong>Abstract:</strong> Physics-informed neural operators (PINOs) have emerged as powerful tools for learning solution operators of partial differential equations (PDEs). Recent research has demonstrated that incorporating Lie point symmetry information can significantly enhance the training efficiency of PINOs, primarily through techniques like data, architecture, and loss augmentation. In this work, we focus on the latter, highlighting that point symmetries oftentimes result in no training signal, limiting their effectiveness in many problems. To address this, we propose a novel loss augmentation strategy that leverages evolutionary representatives of point symmetries, a specific class of generalized symmetries of the underlying PDE. These generalized symmetries provide a richer set of generators compared to standard symmetries, leading to a more informative training signal. We demonstrate that leveraging evolutionary representatives enhances the performance of neural operators, resulting in improved data efficiency and accuracy during training.</p>
+                        </div>
                     </div>
 
                     <div class="schedule-row">
                         <div class="schedule-time">11:10 AM</div>
-                        <div class="schedule-event">Contributed talk</div>
+                        <div class="schedule-event">
+                            <div class="event-info">
+                                <strong>Contributed Talk: Jerry Liu</strong><br>
+                                <em>BWLer: Barycentric Weight Layer Elucidates a Precision-Conditioning Tradeoff for PINNs</em>
+                            </div>
+                            <button class="details-btn" onclick="toggleDetails('contributed2')" data-show-text="View Abstract" data-hide-text="Hide Abstract">View Abstract</button>
+                        </div>
+                    </div>
+                    <div class="keynote-details" id="contributed2">
+                        <div class="details-content">
+                          <p><strong>Abstract:</strong> Physics-informed neural networks (PINNs) offer a flexible way to solve partial differential equations (PDEs) with machine learning, yet they still fall well short of the machine-precision accuracy many scientific tasks demand. This motivates an investigation into whether the precision ceiling comes from the ill-conditioning of the PDEs themselves or from the typical multi-layer perceptron (MLP) architecture. We introduce the Barycentric Weight Layer (BWLer), which models the PDE solution through barycentric polynomial interpolation. A BWLer can be added on top of an existing MLP (a BWLer-hat) or replace it completely (explicit BWLer), cleanly separating how we represent the solution from how we take its derivatives for the physics loss. Using BWLer, we identify fundamental precision limitations within the MLP: on a simple 1-D interpolation task, even MLPs with O(10<sup>5</sup>) parameters stall around 10<sup>-8</sup> relative error -- about eight orders above float64 machine precision -- before any PDE terms are added. In PDE learning, adding a BWLer lifts this ceiling and exposes a tradeoff between achievable accuracy and the conditioning of the PDE loss. For linear PDEs we fully characterize this tradeoff with an explicit error decomposition and navigate it during training with spectral derivatives and preconditioning. Across five benchmark PDEs, adding a BWLer on top of an MLP improves relative error by up to 30x for convection, 10x for reaction, and 1800x for wave equations while remaining compatible with first-order optimizers. Replacing the MLP entirely lets an explicit BWLer reach near-machine-precision on convection, reaction, and wave problems (up to 10 billion times better than prior results) and match the performance of standard PINNs on stiff Burgers’ and irregular-geometry Poisson problems. Together, these findings point to a practical path for combining the flexibility of PINNs with the precision of classical spectral solvers.</p>
+                        </div>
                     </div>
                     
                     <div class="schedule-row">
-                        <div class="schedule-time">11:20 PM</div>
-                        <div class="schedule-event">Invited speaker: Aditi Krishnapriyan (UC Berkeley)</div>
+                        <div class="schedule-time">11:20 AM</div>
+                        <div class="schedule-event">
+                            <div class="event-info">
+                                <strong>Aditi Krishnapriyan (UC Berkeley)</strong><br>
+                                <em>TBA</em>
+                            </div>
+                            <button class="details-btn" onclick="toggleDetails('keynote3')" data-show-text="View Abstract" data-hide-text="Hide Abstract">View Abstract</button>
+                        </div>
+                    </div>
+                    <div class="keynote-details" id="keynote3">
+                        <div class="details-content">
+                          <p><strong>Abstract:</strong> TBA.</p>
+                        </div>
                     </div>
                     
                     <div class="schedule-row">
                         <div class="schedule-time">12:00 PM</div>
-                        <div class="schedule-event">Poster session</div>
+                        <div class="schedule-event">
+                            <div class="event-info">
+                                Poster session
+                            </div>
+                            <button class="details-btn" onclick="toggleDetails('posters2')" data-show-text="View Accepted Posters" data-hide-text="Hide Posters">View Accepted Posters</button>
+                        </div>
+                    </div>
+                    <div class="keynote-details" id="posters2">
+                        <div class="details-content">
+                          <div>
+    <a href="https://openreview.net/forum?id=O7YgvPePse">Universal Approximation of Mean-Field Models via Transformers</a><br>
+    Authors: Shiba Biswal, Karthik Elamvazhuthi, Rishi Sonthalia
+    <br></br>
+</div>
+
+<div>
+    <a href="https://openreview.net/forum?id=iUppQcPAMK">Student-t processes as infinite-width limits of posterior BNNs</a><br>
+    Authors: Francesco Caporali, Stefano Favaro, Dario Trevisan
+    <br></br>
+</div>
+
+<div>
+    <a href="https://openreview.net/forum?id=lknSpGLyI8">Classes of bounded functions that are semantically equivalent to Turing-machine are PAC learnable</a><br>
+    Author: Kevin Xu
+    <br></br>
+</div>
+
+<div>
+    <a href="https://openreview.net/forum?id=ZCH6z1i7eU">Matrix-Free Two-to-Infinity and One-to-Two Norms Estimation</a><br>
+    Authors: Askar Tsyganov, Sergey Samsonov, Maxim Rakhuba
+    <br></br>
+</div>
+
+<div>
+    <a href="https://openreview.net/forum?id=VqycjZACPS">Translation-Equivariance of Normalization Layers and Aliasing in Convolutional Neural Networks</a><br>
+    Authors: Jérémy Scanvic, Quentin Barthélemy, Julián Tachella
+    <br></br>
+</div>
+
+<div>
+    <a href="https://openreview.net/forum?id=rKZkotB0um">BWLer: Barycentric Weight Layer Elucidates a Precision-Conditioning Tradeoff for PINNs</a><br>
+    Authors: Jerry Weihong Liu, Yasa Baig, Denise H. J. Lee, Rajat Vadiraj Dwaraknath, Atri Rudra, Christopher Re
+    <br></br>
+</div>
+
+<div>
+    <a href="https://openreview.net/forum?id=1PPbK8uklp">Query Efficient Structured Matrix Approximation</a><br>
+    Authors: Noah Amsel, Pratyush Avi, Tyler Chen, Feyza Duman Keles, Chinmay Hegde, Christopher Musco, Cameron N. Musco, David Persson
+    <br></br>
+</div>
+
+<div>
+    <a href="https://openreview.net/forum?id=APd65s5NAK">Generalized Lie Symmetries in Physics-Informed Neural Operators</a><br>
+    Authors: Amy Xiang Wang, Zakhar Shumaylov, Peter Zaika, Ferdia Sherry, Carola-Bibiane Schönlieb
+    <br></br>
+</div>
+
+<div>
+    <a href="https://openreview.net/forum?id=tS4vGObuCA">Enhancing Physics-Informed Neural Networks Through Feature Engineering</a><br>
+    Authors: Shaghayegh Fazliani, Zachary Frangella, Ya-Chi Chu, Madeleine Udell
+    <br></br>
+</div>
+
+<div>
+    <a href="https://openreview.net/forum?id=W2TVe58Rp2">Stochastic Differential Policy Optimization: A Rough Path Approach to Reinforcement Learning</a><br>
+    Authors: Minh Phuong Nguyen, Chandrajit L. Bajaj
+    <br></br>
+</div>
+
+<div>
+    <a href="https://openreview.net/forum?id=xmTo6lOQkg">On the upper bounds for the matrix spectral norm</a><br>
+    Authors: Ryapolov Denis, Maxim Rakhuba, Sergey Samsonov, Alexey Naumov
+    <br></br>
+</div>
+                        </div>
                     </div>
                     
                 </div>
@@ -617,5 +922,30 @@ scientific understanding and deployable computational systems.
             <p>&copy; 2025 TASC Workshop | Theory of AI for Scientific Computing</p>
         </div>
     </footer>
+
+    <script>
+        function toggleDetails(keynoteId) {
+            const details = document.getElementById(keynoteId);
+            const button = details.previousElementSibling.querySelector('.details-btn');
+            const showText = button.getAttribute('data-show-text');
+            const hideText = button.getAttribute('data-hide-text');
+            
+            if (details.classList.contains('show')) {
+                details.classList.remove('show');
+                button.textContent = showText;
+            } else {
+                // Hide all other open details first
+                document.querySelectorAll('.keynote-details.show').forEach(detail => {
+                    detail.classList.remove('show');
+                    const otherButton = detail.previousElementSibling.querySelector('.details-btn');
+                    otherButton.textContent = otherButton.getAttribute('data-show-text');
+                });
+                
+                // Show the clicked one
+                details.classList.add('show');
+                button.textContent = hideText;
+            }
+        }
+    </script>
 </body>
 </html>
